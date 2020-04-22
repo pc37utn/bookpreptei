@@ -422,6 +422,14 @@ foreach ($dfiles as $dfil) {
       rename($xtei,$xteinew);
       print "Renaming $xtei to $xteinew\n";
     }
+    //========= also check for existing .tei file
+    $xtscp='./'.$xbase.'.txt';
+    print "Checking for $xtscp\n";
+    $xtscpnew=$xbase.'/TRANSCRIPT.txt';
+    if(file_exists($xtscp)) {
+      rename($xtscp,$xtscpnew);
+      print "Renaming $xtscp to $xtscpnew\n";
+    }
   }// end if xml
   elseif ($end=='.jp2') {
     $fromtype='jp2';
