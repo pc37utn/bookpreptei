@@ -6,11 +6,17 @@
  * re-arrange files and directories and make derivatives to
  * to used as a directory ingest into Islandora Solution Pack Book
  * 20170220
- * add test mode before run
+ * add file test and required binaries test mode before run
  * 20170919
  * add delete misc dot/temp files
+ * 20180103
  * add discover pdf and rename
- * add discover tei and rename
+ * 20180105
+ * fix title entities
+ * 20180912
+ * add creation of lossey display jp2
+ * 20200421
+ * add discover tei and transcript and rename
 */
 
 //------functions-------------------
@@ -125,7 +131,7 @@ function chkMeta($rdir) {
         array_push($errorlist, "$err");
       }
     }//end if xmlhttp://dlwork.lib.utk.edu/dev/
-    if ($xmlcount==0) {
+    if (($end=='.xml')&&($xmlcount==0)) {
       $err="error: missing xml \n";
       array_push($errorlist, "$err");
     }
