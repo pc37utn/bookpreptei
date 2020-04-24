@@ -425,12 +425,12 @@ foreach ($dfiles as $dfil) {
     //========= also check for existing .tei file
     $xtei='./'.$xbase.'.tei';
     print "Checking for $xtei\n";
-    $xteinew=$xbase.'/TEI.bin';
+    $xteinew=$xbase.'/TEI.xml';
     if(file_exists($xtei)) {
       rename($xtei,$xteinew);
       print "Renaming $xtei to $xteinew\n";
     }
-    //========= also check for existing .tei file
+    //========= also check for existing transcript.txt file
     $xtscp='./'.$xbase.'.txt';
     print "Checking for $xtscp\n";
     $xtscpnew=$xbase.'/TRANSCRIPT.txt';
