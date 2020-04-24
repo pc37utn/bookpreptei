@@ -17,6 +17,8 @@
  * add creation of lossey display jp2
  * 20200421
  * add discover tei and transcript and rename
+ * 20200424
+ * add comment out ocr and hocr (Bridger)- speed improvement!
 */
 
 //------functions-------------------
@@ -516,6 +518,7 @@ EOL;
       $convertcommand="kdu_compress -i OBJ.tif -o JP2.jp2 $args ";
       print "Converting tif to display jp2\n";
       exec($convertcommand);
+     /*   comment out unneeded ocr and hocr for speed improvement
       // create OCR
       print "Creating OCR.. \n";
       $tesscommand="tesseract OBJ.tif OCR -l eng";
@@ -527,6 +530,7 @@ EOL;
       // remove doctype if it is there using xmllint
       shell_exec("xmllint --dropdtd --xmlout HOCR.hocr --output HOCR.html");
       exec("rm -f HOCR.hocr");
+     */
       // delete redundant text file if it exists
       if (is_file('HOCR.txt')) exec("rm -f HOCR.txt");
     }
@@ -536,7 +540,8 @@ EOL;
       if (is_file('OBJ.jp2'))  exec("rm -f OBJ.jp2");
     }// end if totype is tif
     // if the OCR and HOCR are there, delete the tif, unless it is the totype
-    if ((is_file("OCR.txt"))&&($totype!='tif'))  exec("rm -f OBJ.tif");
+    //if ((is_file("OCR.txt"))&&($totype!='tif'))  exec("rm -f OBJ.tif");
+    if ($totype!='tif')  exec("rm -f OBJ.tif");
     // change back
     chdir($cwd);
     //
